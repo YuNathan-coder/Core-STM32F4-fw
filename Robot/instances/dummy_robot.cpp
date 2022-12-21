@@ -45,8 +45,8 @@ DummyRobot::~DummyRobot()
 
 void DummyRobot::Init()
 {
-    SetCommandMode(DEFAULT_COMMAND_MODE);
-    SetJointSpeed(DEFAULT_JOINT_SPEED);
+    SetCommandMode(DEFAULT_COMMAND_MODE);   //设置默认的指令模式：INI
+    SetJointSpeed(DEFAULT_JOINT_SPEED);     //设置默认关节速度： 30转/s
 }
 
 
@@ -94,16 +94,6 @@ bool DummyRobot::MoveJ(float _j1, float _j2, float _j3, float _j4, float _j5, fl
 
         jointsStateFlag = 0;
         targetJoints = targetJointsTmp;
-
-        //启动
-        float lastSpeed = jointSpeed;
-
-        MoveJoints(targetJoints);
-
-        while (IsMoving())
-            osDelay(10);
-
-        SetJointSpeed(lastSpeed);
 
         return true;
     }
@@ -321,18 +311,6 @@ void DummyRobot::SetCommandMode(uint32_t _mode)
     }
 }
 
-void DummyRobot::Start() {
-
-    float lastSpeed = jointSpeed;
-
-    MoveJoints(targetJoints);
-
-    while (IsMoving())
-        osDelay(10);
-
-    SetJointSpeed(lastSpeed);
-
-}
 
 
 

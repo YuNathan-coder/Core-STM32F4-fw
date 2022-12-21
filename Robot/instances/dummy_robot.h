@@ -109,7 +109,7 @@ public:
     const DOF6Kinematic::Joint6D_t DEFAULT_JOINT_ACCELERATION_BASES = {150, 100, 200, 200, 200, 200};
     const float DEFAULT_JOINT_ACCELERATION_LOW = 30;    // 0~100
     const float DEFAULT_JOINT_ACCELERATION_HIGH = 100;  // 0~100
-    const CommandMode DEFAULT_COMMAND_MODE = COMMAND_TARGET_POINT_INTERRUPTABLE;
+    const CommandMode DEFAULT_COMMAND_MODE = COMMAND_TARGET_POINT_SEQUENTIAL;
 
 
     DOF6Kinematic::Joint6D_t currentJoints = REST_POSE;
@@ -164,8 +164,7 @@ public:
             make_protocol_function("set_joint_speed", *this, &DummyRobot::SetJointSpeed, "speed"),
             make_protocol_function("set_joint_acc", *this, &DummyRobot::SetJointAcceleration, "acc"),
             make_protocol_function("set_command_mode", *this, &DummyRobot::SetCommandMode, "mode"),
-            make_protocol_object("tuning", tuningHelper.MakeProtocolDefinitions()),
-            make_protocol_function("start", *this, &DummyRobot::Start)
+            make_protocol_object("tuning", tuningHelper.MakeProtocolDefinitions())
         );
     }
 

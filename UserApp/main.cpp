@@ -132,6 +132,7 @@ void OnTimer7Callback()
 void Main(void)
 {
     // Init all communication staff, including USB-CDC/VCP/UART/CAN etc.
+    //初始化所有通信管理，包括USB-CDC/VCP/UART/CAN等
     InitCommunication();
 
     // Init Robot.
